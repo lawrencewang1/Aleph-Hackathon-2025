@@ -8,8 +8,8 @@ function uploadNFT() {
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        console.log("Image selected:", file);
-        console.log("Coin selected:", selectedCoin);
+        // console.log("Image selected:", file);
+        // console.log("Coin selected:", selectedCoin);
         
         // send the file and selected coin type to an API or process the data
 
