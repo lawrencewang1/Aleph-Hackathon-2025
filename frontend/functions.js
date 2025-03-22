@@ -1,6 +1,3 @@
-import fs from 'fs';
-import utils from 'utils';
-
 function uploadNFT() {
     const fileInput = document.getElementById("fileUpload");
     const coinSelect = document.getElementById("coinType");
@@ -10,18 +7,30 @@ function uploadNFT() {
         const file = fileInput.files[0];
         console.log("Image selected:", file);
         console.log("Coin selected:", selectedCoin);
-        
-        // send the file and selected coin type to an API or process the data
-
-        // Example: Sending data (This is just a placeholder, you'll need to implement actual functionality)
-        // const formData = new FormData();
-        // formData.append('file', file);
-        // formData.append('coin', selectedCoin);
-        // sendToAPI(formData);
-
-        window.location.href = "result.html";
+    
+        // Redirect to the results page
+        window.location.replace = "result.html";
         
     } else {
         alert("Please select an image to upload.");
     }
+}
+
+function previewFile() {
+    const preview = document.querySelector("img");
+    const file = document.querySelector("input[type=file]").files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+        "load",
+        () => {
+            // convert image file to base64 string
+            preview.src = reader.result;
+        },
+        false,
+        );
+    
+        if (file) {
+        reader.readAsDataURL(file);
+        }
 }
