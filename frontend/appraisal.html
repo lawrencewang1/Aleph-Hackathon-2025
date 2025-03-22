@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script src="functions"></script> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Upload NFT</title>
@@ -12,21 +13,6 @@
             <input type="file" id="fileUpload">
             <button onclick="uploadNFT()">Upload</button>
         </div>
-
-        <script>
-            function uploadNFT() {
-                event.preventDefault(); // prevent form from submitting
-
-                const fileInput = document.getElementById("fileUpload");
-    
-                if (fileInput.files.length > 0) {
-                    // redirect to result page after selecting an image
-                    window.location.href = "result.html";
-                } else {
-                    alert("Please select an NFT image before uploading.");
-                }
-            }
-        </script>
 
     </body>
 
