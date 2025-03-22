@@ -2,7 +2,7 @@
   "include": ["src//*.ts", "index.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "lib": ["ES2023"],
+    "lib": ["dom", "ES2023"],
     "target": "ESNext",
     "module": "ESNext",
     "skipLibCheck": true,
@@ -17,6 +17,10 @@
 
     /* Linting */
     "strict": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+
+    /* Custom */
+    "types": ["node"],
+    "jsx": "react"
   }
 }

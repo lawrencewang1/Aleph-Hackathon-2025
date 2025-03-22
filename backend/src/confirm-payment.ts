@@ -2,6 +2,9 @@ import fetch from "node-fetch";
 import { MiniAppPaymentSuccessPayload } from "@worldcoin/minikit-js";
 import { RequestHandler } from "express";
 
+// import dotenv from "dotenv";
+// dotenv.config();
+
 interface IRequestPayload {
   payload: MiniAppPaymentSuccessPayload;
 }
