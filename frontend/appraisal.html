@@ -15,17 +15,19 @@
 
         <script>
             function uploadNFT() {
+                event.preventDefault(); // prevent form from submitting
+
                 const fileInput = document.getElementById("fileUpload");
     
                 if (fileInput.files.length > 0) {
-                    // Redirect to result page after selecting an image
+                    // redirect to result page after selecting an image
                     window.location.href = "result.html";
                 } else {
                     alert("Please select an NFT image before uploading.");
                 }
             }
         </script>
-        
+
     </body>
 
 </html>
