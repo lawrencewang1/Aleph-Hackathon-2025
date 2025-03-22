@@ -10,7 +10,19 @@
     <body>
         <div class="container">
             <h1>NFT Appraisal</h1>
-            <input type="file" id="fileUpload">
+
+            <!-- file input for image upload -->
+            <input type="file" id="fileUpload" accept="image/*">
+    
+            <!-- dropdown for selecting coin type -->
+            <select id="coinType">
+                <option value="bitcoin">World</option>
+                <option value="ethereum">Stellar</option>
+                <option value="dogecoin">Mantle</option>
+                <option value="solana">Bitcoin</option>
+                <option value="litecoin">Doge</option>
+            </select>
+    
             <button onclick="uploadNFT()">Upload</button>
         </div>
 
