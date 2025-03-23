@@ -5,6 +5,8 @@ load_dotenv()
 import json
 
 from scraper import scrape_opensea
+from prompt import gpt_prompt
+from find_conversion import conversion
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -14,8 +16,6 @@ CORS(app)
 from openai import OpenAI
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
-
-from prompt import gpt_prompt
 
 def basic(data, coin_type):
     response = client.chat.completions.create(
@@ -38,6 +38,7 @@ def upload_nft():
     coin = data.get('coin')
 
     scraped = scrape_opensea(nft_link)
+    conversion_rate = conversion(scraped['Current Price'], coin)
 
     # Process the file and coin, send to chatgpt
     result = basic(scraped, coin)
@@ -47,7 +48,7 @@ def upload_nft():
 
 if __name__ == "__main__":
     # UNCOMMENT WHEN NOT TESTING
-    # app.run(port=5000, debug=True)
-    pass
+    app.run(port=5000, debug=True)
+    # pass
 
-print(basic("https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288", "Worldcoin (WLD)"))
+#print(basic("https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288", "Worldcoin (WLD)"))
