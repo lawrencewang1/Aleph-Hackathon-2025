@@ -7,31 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload NFT</title>
 </head>
-<body>
-    <div class="app-wrapper">
-        <div class="title-wrapper">
-            <h1>Upload <span class="highlight">NFT</span></h1>
+    <body>
+        <div class="blob-container">
+            <div class="blob" data-speed="0.05" data-distance="80"></div>
+            <div class="blob" data-speed="0.03" data-distance="-60"></div>
+            <div class="blob" data-speed="0.07" data-distance="70"></div>
+            <div class="blob" data-speed="0.04" data-distance="-90"></div>
         </div>
         
-    <div class="container">
-        <div class="currency-selector">
-            <div class="currency-tab" id="currencyTab" onclick="toggleDropdown()">
-                <span>Currency:</span>
-                <span class="current" id="currentCurrency">World (WLD)</span>
-                <span class="arrow">▼</span>
+        <div class="app-wrapper">
+            <div class="title-wrapper">
+                <h1>Upload <span class="highlight">NFT</span></h1>
             </div>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <div class="dropdown-item active" data-value="Worldcoin-__WLD" onclick="selectCurrency(this)">World (WLD)</div>
-                <div class="dropdown-item" data-value="Stellar-XLM" onclick="selectCurrency(this)">Stellar (XLM)</div>
-                <div class="dropdown-item" data-value="Mantle-______MNT" onclick="selectCurrency(this)">Mantle (MNT)</div>
-                <div class="dropdown-item" data-value="Ethereum-ETH" onclick="selectCurrency(this)">Ethereum (ETH)</div>
-                <div class="dropdown-item" data-value="Bitcoin-BTC" onclick="selectCurrency(this)">Bitcoin (BTC)</div>
-                <div class="dropdown-item" data-value="USDC-USDC" onclick="selectCurrency(this)">US Dollar (USDC)</div>
+            
+            <div class="container">
+                <div class="currency-selector">
+                    <div class="currency-tab" id="currencyTab" onclick="toggleDropdown()">
+                        <span>Currency:</span>
+                        <span class="current" id="currentCurrency">World (WLD)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-item active" data-value="Worldcoin-__WLD" onclick="selectCurrency(this)">World (WLD)</div>
+                        <div class="dropdown-item" data-value="Stellar-XLM" onclick="selectCurrency(this)">Stellar (XLM)</div>
+                        <div class="dropdown-item" data-value="Mantle-______MNT" onclick="selectCurrency(this)">Mantle (MNT)</div>
+                        <div class="dropdown-item" data-value="Ethereum-ETH" onclick="selectCurrency(this)">Ethereum (ETH)</div>
+                        <div class="dropdown-item" data-value="Bitcoin-BTC" onclick="selectCurrency(this)">Bitcoin (BTC)</div>
+                        <div class="dropdown-item" data-value="USDC-USDC" onclick="selectCurrency(this)">US Dollar (USDC)</div>
+                    </div>
+                </div>
+    
+                <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
+                <button onclick="uploadNFT()">Upload</button>
             </div>
         </div>
-
-        <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
-        <button onclick="uploadNFT()">Upload</button>
-    </div>
+    </body>
 
 </html>
