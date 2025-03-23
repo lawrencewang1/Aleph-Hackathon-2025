@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'NeueAugenblick';
+  src: url('./src/fonts/NeueAugenblick-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -15,6 +22,10 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+h1 {
+  font-family: 'NeueAugenblick', Arial, sans-serif;
 }
 
 body::before {
@@ -63,12 +74,7 @@ body::after {
   margin-bottom: 30px;
 }
 
-.highlight {
-  color: #ff9f43;
-  font-weight: normal;
-}
-
-.instantly {
+.highlight, .instantly {
   color: #ff9f43;
   font-weight: normal;
 }
@@ -77,15 +83,15 @@ body::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px; /* Space between logos */
+  gap: 25px;
   margin: 25px 0 35px;
 }
 
 .logos img {
-  height: 30px; /* Consistent height for all logos */
-  width: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensures logo fits within dimensions */
-  vertical-align: middle; /* Helps with alignment */
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
   opacity: 0.8;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
 }
@@ -96,7 +102,7 @@ body::after {
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 30px;
-  padding: 12px 30px 12px 30px;
+  padding: 12px 30px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
