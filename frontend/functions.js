@@ -29,6 +29,10 @@ function uploadNFT() {
     .catch(error => {
         console.error("Error:", error);
     });
+    
+    if (response.redirected) {
+        window.location.href = response.url;
+    }
 }
 
 
