@@ -8,8 +8,8 @@ function uploadNFT() {
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        // console.log("Image selected:", file);
-        // console.log("Coin selected:", selectedCoin);
+        console.log("Image selected:", file);
+        console.log("Coin selected:", selectedCoin);
     
         // Redirect to the results page
         window.location.replace("result.html");
