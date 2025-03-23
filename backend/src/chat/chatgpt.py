@@ -39,7 +39,6 @@ def premium(user_prompt : str):
 @app.route("/upload", methods=["POST"])
 def upload_nft():
     # Get the uploaded file
-    print("file")
     file = request.files.get("file")
     if not file:
         return jsonify({"error": "No file uploaded"}), 400
@@ -55,6 +54,7 @@ def upload_nft():
 
     # Process the file and coin (e.g., call another Python function)
     result = basic(filename, selected_coin)
+    print("Success!")
 
     return result
 
