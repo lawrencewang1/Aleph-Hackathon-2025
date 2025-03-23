@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: 'NeueAugenblick';
-  src: url('./src/fonts/NeueAugenblick-Black.ttf') format('truetype'),
-       url('./src/fonts/NeueAugenblick-Regular.ttf') format('truetype');
+  src: url('./src/fonts/NeueAugenblick-Black.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
