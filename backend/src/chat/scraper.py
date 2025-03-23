@@ -52,6 +52,6 @@ def scrape_opensea(nft_url):
     }
 
 # Example usage:
-# nft_url = "https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288"
-# data = scrape_opensea(nft_url)
-# print(data)
+nft_url = "https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288"
+data = scrape_opensea(nft_url)
+print(data)
