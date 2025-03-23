@@ -13,22 +13,18 @@ from openai import OpenAI
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-from prompt import basic_prompt, premium_prompt
+from prompt import gpt_prompt
 
 def basic(image_data, coin_type):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         response_format={"type": "json_object"},
-        messages=[{"role": "system", "content": basic_prompt},
+        messages=[{"role": "system", "content": gpt_prompt},
                 {"role": "user", "content": { "type": "text", "text": coin_type}}],
         temperature=0
     )
     rdict = json.loads(response.choices[0].message.content)
     return rdict
-    # return {image_data, coin_type}
-
-def premium(image_data, coin_type):
-    return ...
 
 @app.route("/upload", methods=["POST"])
 def upload_nft():
