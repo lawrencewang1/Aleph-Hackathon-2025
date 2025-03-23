@@ -19,7 +19,7 @@ def basic(image_data, coin_type):
     # )
     # rdict = json.loads(response["choices"][0]["message"]["content"])
     # return rdict
-    return {'hi' : 'e'}
+    return {image_data: coin_type}
 
 def premium(user_prompt : str):
     response = openai.ChatCompletion.create(
