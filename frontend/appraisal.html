@@ -13,6 +13,7 @@
             <h1>Upload <span class="highlight">NFT</span></h1>
         </div>
         
+    <div class="container">
         <div class="currency-selector">
             <div class="currency-tab" id="currencyTab" onclick="toggleDropdown()">
                 <span>Currency:</span>
@@ -28,11 +29,9 @@
                 <div class="dropdown-item" data-value="USDC-USDC" onclick="selectCurrency(this)">US Dollar (USDC)</div>
             </div>
         </div>
-        
-        <div class="container">
-            <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
-            <button onclick="uploadNFT()">Upload</button>
-        </div>
+
+        <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
+        <button onclick="uploadNFT()">Upload</button>
     </div>
 
 </html>
