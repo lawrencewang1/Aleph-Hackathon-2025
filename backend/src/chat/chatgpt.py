@@ -8,7 +8,7 @@ from scraper import scrape_opensea
 from prompt import gpt_prompt
 from find_conversion import conversion
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, redirect, url_for, render_template
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -56,7 +56,32 @@ def upload_nft():
     result = basic(scraped, coin, conversion_rate)
     print("Success!")
 
-    return result
+    #return result
+    return redirect(url_for('display_nft', 
+                           converted=result['Converted'], 
+                           units=coin,
+                           description=result['Description'], 
+                           image_url=result['Image URL'],
+                           author=result['Author'],
+                           itemname=result['Item']))
+
+@app.route("/display_nft")
+def display_nft():
+    converted = request.args.get('converted')
+    units = units.args.get('units')
+    description = request.args.get('description')
+    image_url = request.args.get('image_url')
+    author = request.args.get('author')
+    itemname = request.args.get('itemname')
+
+    return render_template('result.html', 
+                          converted=converted, 
+                          units=units,
+                          description=description, 
+                          image_url=image_url, 
+                          author=author,
+                          itemname=itemname)
+
 
 if __name__ == "__main__":
     # UNCOMMENT WHEN NOT TESTING
