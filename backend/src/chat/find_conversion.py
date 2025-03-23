@@ -44,7 +44,7 @@ def conversion(current, desired):
     c1 = float(c1_value[1:].replace(",", ""))
     c2 = float(c2_value[1:].replace(",", ""))
 
-    return c2 / c1
+    return c1 / c2
 
 # Example usage
 # rate = conversion('0.0739 ETH', "Worldcoin-__WLD")

@@ -51,7 +51,8 @@ def scrape_opensea(nft_url):
         'Item' : nft_item
     }
 
-# Example usage:
-nft_url = "https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288"
-data = scrape_opensea(nft_url)
-print(data)
+if __name__ == "__main__":
+    # Example usage:
+    nft_url = "https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288"
+    data = scrape_opensea(nft_url)
+    print(data)
