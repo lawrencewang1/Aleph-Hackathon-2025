@@ -3,8 +3,12 @@ from dotenv import load_dotenv
 import openai
 import json
 
-from prompt import basic_prompt, premium_prompt
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
 
+from prompt import basic_prompt, premium_prompt
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -31,3 +35,33 @@ def premium(user_prompt : str):
     )
     rdict = json.loads(response["choices"][0]["message"]["content"])
     return rdict
+
+@app.route("/upload", methods=["POST"])
+def upload_nft():
+    # Get the uploaded file
+    print("file")
+    file = request.files.get("file")
+    print(file)
+    print(file.filename)
+    print(file.content_type)
+    if not file:
+        return jsonify({"error": "No file uploaded"}), 400
+
+    # Get the selected coin
+    selected_coin = request.form.get("coin")
+    if not selected_coin:
+        return jsonify({"error": "No coin selected"}), 400
+
+    # Save the file (optional)
+    file.save(os.path.join("uploads", file.filename))
+
+    # Process the file and coin (e.g., call another Python function)
+    result = basic(file, selected_coin)
+    print(result)
+
+    return result
+
+if __name__ == "__main__":
+    # Create an "uploads" directory if it doesn't exist
+    os.makedirs("uploads", exist_ok=True)
+    app.run(port=5000, debug=True)
