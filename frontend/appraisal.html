@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="functions.js"></script>
-        <link rel="stylesheet" href="appraisal.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Upload NFT</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Upload <span class="highlight">NFT</span></h1>
+<head>
+    <script src="functions.js"></script>
+    <link rel="stylesheet" href="appraisal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload NFT</title>
+</head>
+<body>
+    <div class="container">
+        <h1>NFT <span class="highlight">Appraisal</span></h1>
 
-            <!-- file input for image upload -->
-            <!-- <input type="file" id="fileUpload" accept="image/*"> -->
-            <input type="file" id="fileUpload" accept="image/*" onchange="previewFile()" /><br />
-            <img src="" height="200" alt="Image preview" />
-    
-            <!-- dropdown for selecting coin type -->
-            <select id="coinType">
-                <option value="world">World (WLD)</option>
-                <option value="stellar">Stellar (XLM)</option>
-                <option value="mantle">Mantle (MNT)</option>
-                <option value="ethereum">Ethereum (ETH)</option>
-                <option value="bitcoin">Bitcoin (BTC)</option>
-                <option value="dollar">US Dollar (USDC)</option>
+        <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here" oninput="previewNFT()"/>
 
-            </select>
-    
-            <button onclick="uploadNFT()">Upload</button>
-        </div>
+        <img id="nftPreview" src="" alt="NFT preview" style="display:none;" />
 
-    </body>
+        <select id="coinType">
+            <option value="world">World (WLD)</option>
+            <option value="stellar">Stellar (XLM)</option>
+            <option value="mantle">Mantle (MNT)</option>
+            <option value="ethereum">Ethereum (ETH)</option>
+            <option value="bitcoin">Bitcoin (BTC)</option>
+            <option value="dollar">US Dollar (USDC)</option>
+        </select>
 
+        <button onclick="uploadNFT()">Upload</button>
+    </div>
+</body>
 </html>
