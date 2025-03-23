@@ -1,3 +1,6 @@
+import fs from 'fs';
+import utils from 'utils';
+
 function uploadNFT() {
     const fileInput = document.getElementById("fileUpload");
     const coinSelect = document.getElementById("coinType");
@@ -5,8 +8,8 @@ function uploadNFT() {
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        console.log("Image selected:", file);
-        console.log("Coin selected:", selectedCoin);
+        // console.log("Image selected:", file);
+        // console.log("Coin selected:", selectedCoin);
     
         // Redirect to the results page
         window.location.replace("result.html");
@@ -15,6 +18,7 @@ function uploadNFT() {
         alert("Please select an image to upload.");
     }
 }
+
 
 function previewFile() {
     const preview = document.querySelector("img");
@@ -27,10 +31,10 @@ function previewFile() {
             // convert image file to base64 string
             preview.src = reader.result;
         },
-        false,
-        );
+        false
+    );
     
-        if (file) {
+    if (file) {
         reader.readAsDataURL(file);
-        }
+    }
 }
