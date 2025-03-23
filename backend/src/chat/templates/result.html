@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+    <link rel="stylesheet" href="static/css/result.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NFT <span class="highlight">Appraisal</span> Result</h1>
+        
+        <!-- Dynamic NFT Image -->
+        <img src="{{ image_url }}" alt="NFT Image" id="nftImage" class="nft-image">
+        
+        <!-- Dynamic NFT Value -->
+        <div class="value">
+            <span id="nftValue">{{ converted }}</span> 
+            <span class="currency" id="currencyType">{{ units }}</span>
+        </div>
+        
+        <!-- Dynamic NFT Description -->
+        <div class="description" id="nftDescription">
+            {{ description }}
+        </div>
+
+        <!-- Additional Details -->
+        <p><strong>Author:</strong> {{ author }}</p>
+        <p><strong>Item Name:</strong> {{ itemname }}</p>
+        
+        <!-- Back Button -->
+        <button class="back-button" onclick="window.location.href='http://127.0.0.1:8080/appraisal'">Back to Appraisal</button>
+    </div>
+</body>
+</html>

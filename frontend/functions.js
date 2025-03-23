@@ -21,18 +21,17 @@ function uploadNFT() {
             coin: selectedCoin
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Success:", data);
-        window.location.replace("result.html");
+    .then(response => {
+        if (response.redirected) {
+            // Redirect to the new page
+            window.location.href = response.url;
+        } else {
+            console.error("No redirect received from the server.");
+        }
     })
     .catch(error => {
         console.error("Error:", error);
     });
-    
-    if (response.redirected) {
-        window.location.href = response.url;
-    }
 }
 
 
