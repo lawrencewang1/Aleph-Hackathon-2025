@@ -65,22 +65,17 @@ def upload_nft():
                            author=result['Author'],
                            itemname=result['Item']))
 
-@app.route("/display_nft")
+@app.route("/display_nft", methods=["OPTIONS", "GET"])
 def display_nft():
-    converted = request.args.get('converted')
-    units = units.args.get('units')
-    description = request.args.get('description')
-    image_url = request.args.get('image_url')
-    author = request.args.get('author')
-    itemname = request.args.get('itemname')
+    # converted = request.args.get('converted')
+    # units = request.args.get('units')
+    # description = request.args.get('description')
+    # image_url = request.args.get('image_url')
+    # author = request.args.get('author')
+    # itemname = request.args.get('itemname')
 
     return render_template('result.html', 
-                          converted=converted, 
-                          units=units,
-                          description=description, 
-                          image_url=image_url, 
-                          author=author,
-                          itemname=itemname)
+                          **request.args.to_dict(flat=True))
 
 
 if __name__ == "__main__":
