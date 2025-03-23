@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import openai
 import json
 
+import base64
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 app = Flask(__name__)
@@ -62,3 +64,7 @@ if __name__ == "__main__":
     # Create an "uploads" directory if it doesn't exist
     os.makedirs("uploads", exist_ok=True)
     app.run(port=5000, debug=True)
+
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")

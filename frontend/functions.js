@@ -40,7 +40,7 @@ function uploadNFT() {
         .then(data => {
             console.log("Success:", data);
             // Redirect to the results page
-            // window.location.replace("result.html");
+            window.location.replace("result.html");
         })
         .catch(error => {
             console.error("Error:", error);
