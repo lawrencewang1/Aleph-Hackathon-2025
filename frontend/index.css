@@ -16,8 +16,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
-/* Background blur effect */
 body::before {
   content: "";
   position: absolute;
@@ -43,62 +41,75 @@ body::after {
 .container {
   position: relative;
   z-index: 10;
+  max-width: 600px;
+  padding: 20px;
 }
 
 .title {
-    font-size: 200px;
-    font-weight: 700;
-    color: white;
-    background: linear-gradient(90deg, #5e72eb, #ff9190);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-  }
+  font-size: 200px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #8ab4ff 0%, #e79e9e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 10px;
+  letter-spacing: -2px;
+}
 
 .subtitle {
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
 }
 
 .highlight {
-  color: #fff;
-  font-weight: bold;
+  color: #ff9f43;
+  font-weight: normal;
 }
 
 .instantly {
-  color: #ff9190;
-  font-weight: bold;
+  color: #ff9f43;
+  font-weight: normal;
 }
 
-/* Logos */
 .logos {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
+  align-items: center;
+  gap: 25px; /* Space between logos */
+  margin: 25px 0 35px;
 }
 
 .logos img {
-  width: 200px;
-  height: auto;
+  height: 30px; /* Consistent height for all logos */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures logo fits within dimensions */
+  vertical-align: middle; /* Helps with alignment */
   opacity: 0.8;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
 }
 
 /* Button */
 .button {
   background-color: transparent;
   color: white;
-  border: 2px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 30px;
-  padding: 12px 40px;
+  padding: 12px 30px 12px 30px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.button::after {
+  content: "→";
+  margin-left: 30px;
+  font-size: 20px;
 }
 
 .button:hover {
