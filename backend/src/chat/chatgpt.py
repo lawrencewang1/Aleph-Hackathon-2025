@@ -42,13 +42,8 @@ def upload_nft():
     if not selected_coin:
         return jsonify({"error": "No coin selected"}), 400
 
-    # Save the file (optional)
-    filename = os.path.join("uploads", file.filename)
-    file.save(filename)
-    encoded = encode_image(filename)
-
     # Process the file and coin, send to chatgpt
-    result = basic(encoded, selected_coin)
+    result = basic()
     print("Success!")
     print(result)
 
