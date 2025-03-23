@@ -77,20 +77,19 @@ body::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px; /* Space between logos */
+  gap: 25px;
   margin: 25px 0 35px;
 }
 
 .logos img {
-  height: 30px; /* Consistent height for all logos */
-  width: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensures logo fits within dimensions */
-  vertical-align: middle; /* Helps with alignment */
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
   opacity: 0.8;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
 }
 
-/* Button */
 .button {
   background-color: transparent;
   color: white;

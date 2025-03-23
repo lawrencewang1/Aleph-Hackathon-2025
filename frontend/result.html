@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="functions.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFT Valuation</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-</head>
-<body>
-    <div class="container">
-        <!-- <img src="nft-placeholder.jpg" alt="NFT Image" class="nft-image"> -->
-        <div class="info-box">
-            <p><strong>Description:</strong></p>
-        </div>
-    </div>
-</body>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Results Page</title>
+        <link rel="stylesheet" href="result.css">
+    </head>
+    <body>
 
+        <title>NFT Result</title>
+        <div class="container">
+            <h1>NFT <span class="highlight">Appraisal</span> Result</h1>
+            
+            <!-- <img src="nft-placeholder.jpg" alt="NFT Image" id="nftImage" class="nft-image"> -->
+            
+            <div class="value">
+                <span id="nftValue">2.45</span> <span class="currency" id="currencyType">WLD</span>
+            </div>
+            
+            <div class="details">
+                <span class="detail-label">Collection</span>
+                <span class="detail-value" id="collection">Bored Ape Yacht Club</span>
+            </div>
+            
+            <div class="details">
+                <span class="detail-label">Rarity</span>
+                <span class="detail-value" id="rarity">Top 15%</span>
+            </div>
+            
+            <div class="description" id="nftDescription">
+                This NFT features unique traits that place it in the top percentile of its collection. The combination of rare background, accessories, and color scheme contribute to its above-average valuation. Market activity for similar NFTs indicates stable demand.
+            </div>
+            
+            <button class="back-button" onclick="window.location.href='index.html'">Back to Appraisal</button>
+        </div>
+    </body>
 </html>

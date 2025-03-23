@@ -7,24 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload NFT</title>
 </head>
-<body>
-    <div class="container">
-        <h1>NFT <span class="highlight">Appraisal</span></h1>
-
-        <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here" oninput="previewNFT()"/>
-
-        <img id="nftPreview" src="" alt="NFT preview" style="display:none;" />
-
-        <select id="coinType">
-            <option value="world">World (WLD)</option>
-            <option value="stellar">Stellar (XLM)</option>
-            <option value="mantle">Mantle (MNT)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="dollar">US Dollar (USDC)</option>
-        </select>
-
-        <button onclick="uploadNFT()">Upload</button>
-    </div>
-</body>
+    <body>
+        <div class="app-wrapper">
+            <h1>Upload <span class="highlight">NFT</span></h1>
+                <div class="container">
+                    <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
+                    <select id="coinType">
+                        <option value="world">World (WLD)</option>
+                        <option value="stellar">Stellar (XLM)</option>
+                        <option value="mantle">Mantle (MNT)</option>
+                        <option value="ethereum">Ethereum (ETH)</option>
+                        <option value="bitcoin">Bitcoin (BTC)</option>
+                        <option value="dollar">US Dollar (USDC)</option>
+                    </select>
+                    <button onclick="uploadNFT()">Upload</button>
+                </div>
+        </div>
+    </body>
 </html>
