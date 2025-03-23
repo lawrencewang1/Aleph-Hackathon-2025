@@ -70,12 +70,27 @@ export const VerifyBlock = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Verify Block</h1>
-      <button className="bg-green-500 p-4" onClick={handleVerify}>
+    <div style={{ 
+      position: 'absolute', 
+      top: '20px', 
+      right: '20px', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'flex-end'
+    }}>
+      <h1 style={{ margin: '0 0 10px 0', fontSize: '16px', color: 'white' }}>Verify Block</h1>
+      <button 
+        className="bg-green-500 p-4" 
+        onClick={handleVerify}
+        style={{ 
+          borderRadius: '4px', 
+          border: 'none', 
+          cursor: 'pointer' 
+        }}
+      >
         Test Verify
       </button>
-      <span>{JSON.stringify(handleVerifyResponse, null, 2)}</span>
+      <span style={{ display: 'none' }}>{JSON.stringify(handleVerifyResponse, null, 2)}</span>
     </div>
   );
 };
