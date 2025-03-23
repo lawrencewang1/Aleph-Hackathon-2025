@@ -1,21 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { VerifyBlock } from "./components/Verify";
-import { PayBlock } from "./components/Pay";
+import { useState, useEffect } from 'react';
 
-// Add a non-null assertion operator (!) or use proper error handling
-const rootElement = document.getElementById('verification-component');
-
-// Option 1: Using non-null assertion (if you're confident the element exists)
-if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <div className="flex flex-col items-center justify-center gap-y-3">
-        <VerifyBlock />
-        <PayBlock />
-      </div>
-    </React.StrictMode>
-  );
-} else {
-  console.error('Could not find element with ID "verification-component"');
+// Define the type for verification result
+interface VerificationResult {
+  nullifier_hash: string;
+  merkle_root: string;
+  proof: string;
+  credential_type: string;
+  // Add any other fields returned by worldID.verify()
 }
+
+export function useWorldcoinVerification() {
+  const [verificationResult, setVerificationResult] = useState<VerificationResult | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Check if WorldID SDK is available
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.worldID) {
+      console.warn('WorldID SDK not loaded. Make sure to include the script in your HTML.');
+    }
+  }, []);
+
+  const verify = async () => {
+    if (typeof window === 'undefined' || !window.worldID) {
+      setError('WorldID SDK not available');
+      return null;
+    }
+
+    setIsVerifying(true);
+    setError(null);
+
+    try {
+      const result = await window.worldID.verify({
+        app_name: "MRC", // Your app name
+        action: "verify", // The action being performed
+        signal: "user_verification", // Optional signal string
+        // You can add more parameters as needed according to the docs
+      });
+      
+      setVerificationResult(result);
+      return result;
+    } catch (err) {
+      console.error('Verification failed:', err);
+      setError(err instanceof Error ? err.message : 'Verification failed');
+      return null;
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+  return <p>test</p>;
+} 
