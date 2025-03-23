@@ -30,3 +30,64 @@ function uploadNFT() {
         console.error("Error:", error);
     });
 }
+
+
+ document.write('<select id="coinType" style="display:none;"></select>');
+        
+ const currencies = [
+     {value: "Worldcoin-__WLD", text: "World (WLD)"},
+     {value: "Stellar-XLM", text: "Stellar (XLM)"},
+     {value: "Mantle-______MNT", text: "Mantle (MNT)"},
+     {value: "Ethereum-ETH", text: "Ethereum (ETH)"},
+     {value: "Bitcoin-BTC", text: "Bitcoin (BTC)"},
+     {value: "USDC-USDC", text: "US Dollar (USDC)"}
+ ];
+ 
+ const selectElement = document.getElementById('coinType');
+ currencies.forEach(currency => {
+     const option = document.createElement('option');
+     option.value = currency.value;
+     option.textContent = currency.text;
+     selectElement.appendChild(option);
+ });
+ 
+ function toggleDropdown() {
+     const dropdownMenu = document.getElementById('dropdownMenu');
+     const currencyTab = document.getElementById('currencyTab');
+     
+     dropdownMenu.classList.toggle('open');
+     currencyTab.classList.toggle('open');
+     
+     // Close dropdown when clicking outside
+     if (dropdownMenu.classList.contains('open')) {
+         document.addEventListener('click', closeDropdownOnClickOutside);
+     } else {
+         document.removeEventListener('click', closeDropdownOnClickOutside);
+     }
+ }
+ 
+ function closeDropdownOnClickOutside(event) {
+     const dropdownMenu = document.getElementById('dropdownMenu');
+     const currencyTab = document.getElementById('currencyTab');
+     
+     if (!event.target.closest('.currency-selector')) {
+         dropdownMenu.classList.remove('open');
+         currencyTab.classList.remove('open');
+         document.removeEventListener('click', closeDropdownOnClickOutside);
+     }
+ }
+ 
+ function selectCurrency(element) {
+     const value = element.getAttribute('data-value');
+     const selectElement = document.getElementById('coinType');
+     selectElement.value = value;
+     
+     document.getElementById('currentCurrency').textContent = element.textContent;
+     
+     const items = document.querySelectorAll('.dropdown-item');
+     items.forEach(item => item.classList.remove('active'));
+     element.classList.add('active');
+     
+     document.getElementById('dropdownMenu').classList.remove('open');
+     document.getElementById('currencyTab').classList.remove('open');
+ }
