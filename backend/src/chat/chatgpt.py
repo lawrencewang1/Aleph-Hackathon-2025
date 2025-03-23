@@ -17,18 +17,25 @@ from openai import OpenAI
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def basic(data, coin_type):
+def basic(data, coin_type, conversion):
+    link = data['Image URL']
+    price = data['Current Price']
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": gpt_prompt},
-            {"role": "user", "content": f"JSON: {data}\nDesired Coin: {coin_type}"}
+            {"role": "user", "content": f"Link: {link}\nPrice: {price}\nConversion Rate: {conversion}"}
         ],
         temperature=0
     )
     rdict = json.loads(response.choices[0].message.content)
-    return rdict
+    print(rdict)
+    data['Converted'] = rdict['New Price']
+    data['Description'] = rdict['Description']
+    print()
+    print(data)
+    return data
 
 @app.route("/upload", methods=["POST"])
 def upload_nft():
@@ -38,10 +45,15 @@ def upload_nft():
     coin = data.get('coin')
 
     scraped = scrape_opensea(nft_link)
+    print(scraped)
     conversion_rate = conversion(scraped['Current Price'], coin)
 
+    print(scraped)
+    print(coin)
+    print(conversion_rate)
+
     # Process the file and coin, send to chatgpt
-    result = basic(scraped, coin)
+    result = basic(scraped, coin, conversion_rate)
     print("Success!")
 
     return result
@@ -49,6 +61,4 @@ def upload_nft():
 if __name__ == "__main__":
     # UNCOMMENT WHEN NOT TESTING
     app.run(port=5000, debug=True)
-    # pass
-
-#print(basic("https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288", "Worldcoin (WLD)"))
+    #pass

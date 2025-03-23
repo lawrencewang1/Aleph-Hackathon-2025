@@ -1,7 +1,11 @@
 # prompt for gpt
 gpt_prompt = """
-Given the NFT available at the following URL, please provide an appraisal of its value based on related NFTs from the same artist, current market conditions, and its style.
-Justify your answer with a 2-3 sentence paragraph. Feel free to use a visual description of its features.
+Input:
+You will be given a link to a nft: "LINK", a price of a crypto: "PRICE", and the conversion rate: "CONVERSION"
+Output: must be a JSON file
+Description: generate a short description for the nft using "LINK"
+New Price: multiply the numeric value of "PRICE" and multiply it by "CONVERSION" -> must be a double
 
-Your appraisal should be a range denoting your 20% and 80% confidence intervals for the value of the given NFT.
+Example:
+{"Description": "​Yumemono #2390 is a non-fungible token (NFT) from the Yumemono ☆ 夢物 collection, created by napmaxxing. The NFT's description indicates that its content will be revealed soon. It is currently owned by user E5DAC0.", "New Price" : 15.7}
 """
