@@ -56,7 +56,7 @@ def upload_nft():
     file.save(os.path.join("uploads", file.filename))
 
     # Process the file and coin (e.g., call another Python function)
-    result = basic(file, selected_coin)
+    result = basic(file.filename, selected_coin)
     print(result)
 
     return result
