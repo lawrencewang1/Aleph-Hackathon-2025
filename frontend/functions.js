@@ -1,6 +1,3 @@
-import fs from 'fs';
-import utils from 'utils';
-
 function uploadNFT() {
     const fileInput = document.getElementById("fileUpload");
     const coinSelect = document.getElementById("coinType");
