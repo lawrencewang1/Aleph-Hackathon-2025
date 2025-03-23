@@ -9,7 +9,7 @@ function uploadNFT() {
         console.log("Coin selected:", selectedCoin);
     
         // Redirect to the results page
-        window.location.replace = "result.html";
+        window.location.replace("result.html");
         
     } else {
         alert("Please select an image to upload.");
