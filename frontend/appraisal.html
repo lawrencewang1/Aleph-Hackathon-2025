@@ -7,21 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload NFT</title>
 </head>
-    <body>
-        <div class="app-wrapper">
+<body>
+    <div class="app-wrapper">
+        <div class="title-wrapper">
             <h1>Upload <span class="highlight">NFT</span></h1>
-                <div class="container">
-                    <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
-                    <select id="coinType">
-                        <option value="Worldcoin-__WLD">World (WLD)</option>
-                        <option value="Stellar-XLM">Stellar (XLM)</option>
-                        <option value="Mantle-______MNT">Mantle (MNT)</option>
-                        <option value="Ethereum-ETH">Ethereum (ETH)</option>
-                        <option value="Bitcoin-BTC">Bitcoin (BTC)</option>
-                        <option value="USDC-USDC">US Dollar (USDC)</option>
-                    </select>
-                    <button onclick="uploadNFT()">Upload</button>
-                </div>
         </div>
-    </body>
+        
+        <div class="currency-selector">
+            <div class="currency-tab" id="currencyTab" onclick="toggleDropdown()">
+                <span>Currency:</span>
+                <span class="current" id="currentCurrency">World (WLD)</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <div class="dropdown-item active" data-value="Worldcoin-__WLD" onclick="selectCurrency(this)">World (WLD)</div>
+                <div class="dropdown-item" data-value="Stellar-XLM" onclick="selectCurrency(this)">Stellar (XLM)</div>
+                <div class="dropdown-item" data-value="Mantle-______MNT" onclick="selectCurrency(this)">Mantle (MNT)</div>
+                <div class="dropdown-item" data-value="Ethereum-ETH" onclick="selectCurrency(this)">Ethereum (ETH)</div>
+                <div class="dropdown-item" data-value="Bitcoin-BTC" onclick="selectCurrency(this)">Bitcoin (BTC)</div>
+                <div class="dropdown-item" data-value="USDC-USDC" onclick="selectCurrency(this)">US Dollar (USDC)</div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <input type="text" id="nftLink" placeholder="Paste OpenSea NFT link here"/>
+            <button onclick="uploadNFT()">Upload</button>
+        </div>
+    </div>
+
 </html>
