@@ -4,6 +4,8 @@ load_dotenv()
 
 import json
 
+from scraper import scrape_opensea
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 app = Flask(__name__)
@@ -15,12 +17,14 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 from prompt import gpt_prompt
 
-def basic(image_data, coin_type):
+def basic(data, coin_type):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         response_format={"type": "json_object"},
-        messages=[{"role": "system", "content": gpt_prompt},
-                {"role": "user", "content": { "type": "text", "text": coin_type}}],
+        messages=[
+            {"role": "system", "content": gpt_prompt},
+            {"role": "user", "content": f"JSON: {data}\nDesired Coin: {coin_type}"}
+        ],
         temperature=0
     )
     rdict = json.loads(response.choices[0].message.content)
@@ -28,23 +32,22 @@ def basic(image_data, coin_type):
 
 @app.route("/upload", methods=["POST"])
 def upload_nft():
-    # Get the uploaded file
-    file = request.files.get("file")
-    if not file:
-        return jsonify({"error": "No file uploaded"}), 400
+    data = request.get_json()
 
-    # Get the selected coin
-    selected_coin = request.form.get("coin")
-    if not selected_coin:
-        return jsonify({"error": "No coin selected"}), 400
+    nft_link = data.get('nft_link')
+    coin = data.get('coin')
+
+    scraped = scrape_opensea(nft_link)
 
     # Process the file and coin, send to chatgpt
-    result = basic()
+    result = basic(scraped, coin)
     print("Success!")
-    print(result)
 
     return result
 
 if __name__ == "__main__":
     # UNCOMMENT WHEN NOT TESTING
-    app.run(port=5000, debug=True)
+    # app.run(port=5000, debug=True)
+    pass
+
+print(basic("https://opensea.io/assets/ethereum/0x7011ee079f579eb313012bddb92fd6f06fa43335/3288", "Worldcoin (WLD)"))
